@@ -15,7 +15,7 @@ import java.util.Map;
 @Endpoint(id = "restaurant")
 public class RestaurantCustomEndpoint {
 
-    Map<String, String> map = new HashMap<>();
+    final Map<String, String> map = new HashMap<>();
 
     public RestaurantCustomEndpoint(RestaurantRepository restaurantRepository,
                                     @Value("${info.restaurant.location: New York}") String location) {

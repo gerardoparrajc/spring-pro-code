@@ -30,11 +30,11 @@ public class AccountClientTests {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    private Random random = new Random();
+    private final Random random = new Random();
 
     @Test
     @Disabled
-    public void listAccounts_using_invalid_user_should_return_401() throws Exception {
+    public void listAccounts_using_invalid_user_should_return_401() {
         ResponseEntity<String> responseEntity
                 = restTemplate.withBasicAuth("invalid", "invalid")
                               .getForEntity("/accounts", String.class);
@@ -105,7 +105,7 @@ public class AccountClientTests {
     //          is not permitted to create a new Account
     // - Use the code above as a guidance
     @Test
-    public void createAccount_using_user_should_return_403() throws Exception {
+    public void createAccount_using_user_should_return_403() {
 
 
 

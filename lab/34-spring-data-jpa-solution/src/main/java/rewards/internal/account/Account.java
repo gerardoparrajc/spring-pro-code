@@ -42,7 +42,7 @@ public class Account {
 
 	@OneToMany
 	@JoinColumn(name="ACCOUNT_ID")
-	private Set<Beneficiary> beneficiaries = new HashSet<Beneficiary>();
+	private Set<Beneficiary> beneficiaries = new HashSet<>();
 
 	@Column(name="CREDIT_CARD")
 	private String creditCardNumber;
@@ -136,11 +136,7 @@ public class Account {
 				return false;
 			}
 		}
-		if (totalPercentage.equals(Percentage.oneHundred())) {
-			return true;
-		} else {
-			return false;
-		}
+		return totalPercentage.equals(Percentage.oneHundred());
 	}
 
 	/**
@@ -163,7 +159,7 @@ public class Account {
 	 * @return the individual beneficiary distributions
 	 */
 	private Set<Distribution> distribute(MonetaryAmount amount) {
-		Set<Distribution> distributions = new HashSet<Distribution>(beneficiaries.size());
+		Set<Distribution> distributions = new HashSet<>(beneficiaries.size());
 		for (Beneficiary beneficiary : beneficiaries) {
 			MonetaryAmount distributionAmount = amount.multiplyBy(beneficiary.getAllocationPercentage());
 			beneficiary.credit(distributionAmount);

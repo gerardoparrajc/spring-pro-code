@@ -18,7 +18,7 @@ import common.money.Percentage;
  */
 public class StubRestaurantRepository implements RestaurantRepository {
 
-	private Map<String, Restaurant> restaurantsByMerchantNumber = new HashMap<String, Restaurant>();
+	private final Map<String, Restaurant> restaurantsByMerchantNumber = new HashMap<>();
 
 	public StubRestaurantRepository() {
 		Restaurant restaurant = new Restaurant("1234567890", "Apple Bees");

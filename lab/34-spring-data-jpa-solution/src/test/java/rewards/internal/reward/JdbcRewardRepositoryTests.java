@@ -32,7 +32,7 @@ public class JdbcRewardRepositoryTests {
 	private DataSource dataSource;
 
 	@BeforeEach
-	public void setUp() throws Exception {
+	public void setUp() {
 		repository = new JdbcRewardRepository();
 		dataSource = createTestDataSource();
 		repository.setDataSource(dataSource);

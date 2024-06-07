@@ -25,7 +25,7 @@ public class AccountController {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	private AccountManager accountManager;
+	private final AccountManager accountManager;
 
 	/**
 	 * Creates a new AccountController with a given account manager.
@@ -93,7 +93,7 @@ public class AccountController {
 		}
 		Beneficiary deletedBeneficiary = account.getBeneficiary(beneficiaryName);
 
-		HashMap<String, Percentage> allocationPercentages = new HashMap<String, Percentage>();
+		HashMap<String, Percentage> allocationPercentages = new HashMap<>();
 
 		// If we are removing the only beneficiary or the beneficiary has an
 		// allocation of zero we don't need to worry. Otherwise, need to share
@@ -160,7 +160,7 @@ public class AccountController {
 	}
 
 	/**
-	 * Return a response with the location of the new resource. It's URL is
+	 * Return a response with the location of the new resource. Its URL is
 	 * assumed to be a child of the URL just received.
 	 * <p>
 	 * Suppose we have just received an incoming URL of, say,

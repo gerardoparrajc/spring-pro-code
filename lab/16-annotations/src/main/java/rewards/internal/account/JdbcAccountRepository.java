@@ -76,11 +76,7 @@ public class JdbcAccountRepository implements AccountRepository {
 
 	public void updateBeneficiaries(Account account) {
 		String sql = "update T_ACCOUNT_BENEFICIARY SET SAVINGS = ? where ACCOUNT_ID = ? and NAME = ?";
-		Connection conn = null;
-		PreparedStatement ps = null;
-		try {
-			conn = dataSource.getConnection();
-			ps = conn.prepareStatement(sql);
+		try (Connection conn = dataSource.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 			for (Beneficiary beneficiary : account.getBeneficiaries()) {
 				ps.setBigDecimal(1, beneficiary.getSavings().asBigDecimal());
 				ps.setLong(2, account.getEntityId());
@@ -89,27 +85,14 @@ public class JdbcAccountRepository implements AccountRepository {
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException("SQL exception occurred updating beneficiary savings", e);
-		} finally {
-			if (ps != null) {
-				try {
-					// Close to prevent database cursor exhaustion
-					ps.close();
-				} catch (SQLException ex) {
-				}
-			}
-			if (conn != null) {
-				try {
-					// Close to prevent database connection exhaustion
-					conn.close();
-				} catch (SQLException ex) {
-				}
-			}
 		}
+		// Close to prevent database cursor exhaustion
+		// Close to prevent database connection exhaustion
 	}
 
 	/**
 	 * Map the rows returned from the join of T_ACCOUNT and T_ACCOUNT_BENEFICIARY
-	 * to an fully-reconstituted Account aggregate.
+	 * to a fully-reconstituted Account aggregate.
 	 *
 	 * @param rs the set of rows returned from the query
 	 * @return the mapped Account aggregate

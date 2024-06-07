@@ -27,7 +27,7 @@ public class AccountWebTestClientTests {
     @Autowired
     private WebTestClient webTestClient;
 
-    private Random random = new Random();
+    private final Random random = new Random();
 
     @Test
     public void listAccounts_WebTestClient() {

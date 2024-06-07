@@ -20,7 +20,7 @@ public class RewardsConfig {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	DataSource dataSource;
+	final DataSource dataSource;
 
 	public RewardsConfig(DataSource dataSource) {
 		this.dataSource = dataSource;

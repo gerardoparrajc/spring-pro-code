@@ -22,7 +22,7 @@ import javax.sql.DataSource;
 @Configuration
 public class RewardsConfig {
 
-	DataSource dataSource;
+	final DataSource dataSource;
 
 	public RewardsConfig(DataSource dataSource) {
 		this.dataSource = dataSource;

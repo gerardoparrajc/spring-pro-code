@@ -34,7 +34,7 @@ public class RewardNetworkImplTests {
 
 	// TODO-09: Review the test setup
 	@BeforeEach
-	public void setUp() throws Exception {
+	public void setUp() {
 		// Create stubs to facilitate fast in-memory testing with
 		// dummy data and no external dependencies
 		AccountRepository accountRepo = new StubAccountRepository();

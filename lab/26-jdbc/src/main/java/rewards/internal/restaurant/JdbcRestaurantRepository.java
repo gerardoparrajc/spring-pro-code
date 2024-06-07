@@ -38,7 +38,7 @@ import java.sql.SQLException;
 
 public class JdbcRestaurantRepository implements RestaurantRepository {
 
-	private DataSource dataSource;
+	private final DataSource dataSource;
 
 	public JdbcRestaurantRepository(DataSource dataSource) {
 		this.dataSource = dataSource;

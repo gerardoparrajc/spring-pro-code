@@ -105,7 +105,7 @@ public class RewardNetworkTests {
 	}
 
 	@AfterEach
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		// simulate the Spring bean destruction lifecycle:
 		if (context != null)
 			context.close();

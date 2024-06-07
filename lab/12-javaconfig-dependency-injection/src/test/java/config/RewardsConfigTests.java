@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SuppressWarnings("unused")
 public class RewardsConfigTests {
 	// Provide a mock object for testing
-	private DataSource dataSource = Mockito.mock(DataSource.class);
+	private final DataSource dataSource = Mockito.mock(DataSource.class);
 
 	// TODO-05: Run the test
 	// - Uncomment the code below between /* and */
@@ -53,7 +53,7 @@ public class RewardsConfigTests {
 	 *
 	 */
 	private void checkDataSource(Object repository) {
-		Class<? extends Object> repositoryClass = repository.getClass();
+		Class<?> repositoryClass = repository.getClass();
 
 		try {
 			Field dataSource = repositoryClass.getDeclaredField("dataSource");

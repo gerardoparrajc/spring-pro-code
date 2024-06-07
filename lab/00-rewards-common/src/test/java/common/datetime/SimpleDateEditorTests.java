@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SimpleDateEditorTests {
 
-	private SimpleDateEditor editor = new SimpleDateEditor();
+	private final SimpleDateEditor editor = new SimpleDateEditor();
 
 	@Test
 	public void testGetAsText() {

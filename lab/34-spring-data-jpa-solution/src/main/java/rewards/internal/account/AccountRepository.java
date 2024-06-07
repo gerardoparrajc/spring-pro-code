@@ -19,6 +19,6 @@ public interface AccountRepository extends Repository<Account,Long> {
 	 *            the credit card number
 	 * @return the account object
 	 */
-	public Account findByCreditCardNumber(String creditCardNumber);
+	Account findByCreditCardNumber(String creditCardNumber);
 
 }

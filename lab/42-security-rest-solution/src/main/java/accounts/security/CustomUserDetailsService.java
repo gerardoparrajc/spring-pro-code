@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Primary
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     public CustomUserDetailsService(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
@@ -23,16 +23,11 @@ public class CustomUserDetailsService implements UserDetailsService {
         User.UserBuilder builder = User.builder();
         builder.username(username);
         builder.password(passwordEncoder.encode(username));
-        
+
         switch (username) {
-            case "mary":
-                builder.roles("USER");
-                break;
-            case "joe":
-                builder.roles("USER", "ADMIN");
-                break;
-            default:
-                throw new UsernameNotFoundException("User not found.");
+            case "mary" -> builder.roles("USER");
+            case "joe" -> builder.roles("USER", "ADMIN");
+            default -> throw new UsernameNotFoundException("User not found.");
         }
 
         return builder.build();

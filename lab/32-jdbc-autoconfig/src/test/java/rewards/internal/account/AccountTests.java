@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class AccountTests {
 
-	private Account account = new Account("1", "Keith and Keri Donald");
+	private final Account account = new Account("1", "Keith and Keri Donald");
 
 	@Test
 	public void accountIsValid() {

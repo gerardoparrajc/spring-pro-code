@@ -14,7 +14,7 @@ import javax.sql.DataSource;
  */
 public class JdbcRewardRepository implements RewardRepository {
 	
-	private JdbcTemplate jdbcTemplate;
+	private final JdbcTemplate jdbcTemplate;
 
 	public JdbcRewardRepository(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);

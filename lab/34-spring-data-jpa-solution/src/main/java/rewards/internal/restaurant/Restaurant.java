@@ -17,7 +17,7 @@ import common.money.Percentage;
  * A restaurant establishment in the network. Like AppleBee's.
  * 
  * Restaurants calculate how much benefit may be awarded to an account for
- * dining based on a availability policy and a benefit percentage.
+ * dining based on an availability policy and a benefit percentage.
  */
 @Entity
 @Table(name = "T_RESTAURANT")

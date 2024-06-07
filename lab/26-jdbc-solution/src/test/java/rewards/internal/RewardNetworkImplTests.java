@@ -30,7 +30,7 @@ public class RewardNetworkImplTests {
 	private RewardNetworkImpl rewardNetwork;
 
 	@BeforeEach
-	public void setUp() throws Exception {
+	public void setUp() {
 		// create stubs to facilitate fast in-memory testing with dummy data and no external dependencies
 		AccountRepository accountRepo = new StubAccountRepository();
 		RestaurantRepository restaurantRepo = new StubRestaurantRepository();

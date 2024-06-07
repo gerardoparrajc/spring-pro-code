@@ -12,7 +12,7 @@ public class DBExceptionHandlingAspect {
 	
 	public static final String EMAIL_FAILURE_MSG = "Failed sending an email to Mister Smith : ";
 	
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 
 	//	TODO-10 (Optional): Use AOP to log an exception.

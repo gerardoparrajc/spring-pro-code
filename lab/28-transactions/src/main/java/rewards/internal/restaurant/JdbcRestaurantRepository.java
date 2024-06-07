@@ -23,7 +23,7 @@ public class JdbcRestaurantRepository implements RestaurantRepository {
 	/**
 	 * Maps a row returned from a query of T_RESTAURANT to a Restaurant object.
 	 */
-	private RowMapper<Restaurant> rowMapper = new RestaurantRowMapper();
+	private final RowMapper<Restaurant> rowMapper = new RestaurantRowMapper();
 
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);

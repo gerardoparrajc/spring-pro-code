@@ -47,7 +47,7 @@ public class Account {
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ACCOUNT_ID")
-	private Set<Beneficiary> beneficiaries = new HashSet<Beneficiary>();
+	private Set<Beneficiary> beneficiaries = new HashSet<>();
 
 	protected Account() {
 	}
@@ -204,11 +204,7 @@ public class Account {
 				return false;
 			}
 		}
-		if (totalPercentage.equals(Percentage.oneHundred())) {
-			return true;
-		} else {
-			return false;
-		}
+		return totalPercentage.equals(Percentage.oneHundred());
 	}
 
 	public void setValid(boolean valid) {
@@ -242,7 +238,7 @@ public class Account {
 	 * @return the individual beneficiary distributions
 	 */
 	private Set<Distribution> distribute(MonetaryAmount amount) {
-		Set<Distribution> distributions = new HashSet<Distribution>(
+		Set<Distribution> distributions = new HashSet<>(
 				beneficiaries.size());
 		for (Beneficiary beneficiary : beneficiaries) {
 			MonetaryAmount distributionAmount = amount.multiplyBy(beneficiary

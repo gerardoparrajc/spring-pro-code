@@ -52,7 +52,7 @@ public class DbConfig {
 	 * Transaction Manager For JPA
 	 */
 	@Bean
-	public PlatformTransactionManager transactionManager() throws Exception {
+	public PlatformTransactionManager transactionManager() {
 		return new JpaTransactionManager();
 	}
 

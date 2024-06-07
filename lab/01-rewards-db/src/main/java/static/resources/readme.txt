@@ -3,7 +3,7 @@ is slightly easier to serve up resources for boot and non-boot resources
 in the same course.
 
 In the mvc labs, the pages will refer to the resources under "/resources/styles"
-and "/resources/images", and a special resource handler is needed to to translate 
+and "/resources/images", and a special resource handler is needed to translate
 "/resources/**" into "classpath:/static/*".  This works beautifully.
 
 But boot handles static classpath resources even more beautifully.  

@@ -10,7 +10,7 @@ import com.jamonapi.MonitorComposite;
 
 public class JamonMonitorFactory implements MonitorFactory, GlobalMonitorStatistics {
 
-	private com.jamonapi.MonitorFactoryInterface monitorFactory = com.jamonapi.MonitorFactory.getFactory();
+	private final com.jamonapi.MonitorFactoryInterface monitorFactory = com.jamonapi.MonitorFactory.getFactory();
 
 	public Monitor start(String name) {
 		return new JamonMonitor(monitorFactory.start(name));

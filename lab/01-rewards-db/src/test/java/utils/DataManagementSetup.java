@@ -95,7 +95,7 @@ public class DataManagementSetup {
 		factoryBean.afterPropertiesSet();
 
 		// get the created session factory
-		return (EntityManagerFactory) factoryBean.getObject();
+		return factoryBean.getObject();
 	}
 
 }

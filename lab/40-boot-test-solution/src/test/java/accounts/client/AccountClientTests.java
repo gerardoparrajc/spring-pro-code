@@ -22,7 +22,7 @@ public class AccountClientTests {
 	@Autowired
 	private TestRestTemplate restTemplate;
 
-	private Random random = new Random();
+	private final Random random = new Random();
 	
 	@Test 
 	public void listAccounts() {

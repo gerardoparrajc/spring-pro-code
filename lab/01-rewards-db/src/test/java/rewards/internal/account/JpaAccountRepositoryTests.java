@@ -22,7 +22,7 @@ public class JpaAccountRepositoryTests extends AbstractAccountRepositoryTests {
 	private TransactionStatus transactionStatus;
 
 	@BeforeEach
-	public void setUp() throws Exception {
+	public void setUp() {
 		DataManagementSetup dataManagementSetup = new DataManagementSetup();
 
 		JpaAccountRepository accountRepository = new JpaAccountRepository();
@@ -41,7 +41,7 @@ public class JpaAccountRepositoryTests extends AbstractAccountRepositoryTests {
 	}
 
 	@AfterEach
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		// rollback the transaction to avoid corrupting other tests
 		if (transactionManager != null)
 			transactionManager.rollback(transactionStatus);

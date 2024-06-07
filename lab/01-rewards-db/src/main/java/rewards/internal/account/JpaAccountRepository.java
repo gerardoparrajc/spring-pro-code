@@ -40,7 +40,7 @@ public class JpaAccountRepository implements AccountRepository {
 				.createNativeQuery(ACCOUNT_BY_CC_QUERY)
 				.setParameter("ccn", creditCardNumber).getSingleResult();
 
-		Account account = (Account) entityManager.find(Account.class, accountId.longValue());
+		Account account = entityManager.find(Account.class, accountId.longValue());
 
 		// Force beneficiaries to load too - avoid Hibernate lazy loading error
 		account.getBeneficiaries().size();

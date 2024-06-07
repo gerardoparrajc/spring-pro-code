@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 @Configuration
 public class RewardsConfig {
 
-	JdbcTemplate jdbcTemplate;
+	final JdbcTemplate jdbcTemplate;
 
 	public RewardsConfig(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);

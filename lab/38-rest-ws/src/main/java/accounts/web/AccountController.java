@@ -22,7 +22,7 @@ public class AccountController {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	private AccountManager accountManager;
+	private final AccountManager accountManager;
 
 	/**
 	 * Creates a new AccountController with a given account manager.
@@ -143,7 +143,7 @@ public class AccountController {
 			throw new RuntimeException("Logic to rebalance Beneficiaries not defined.");
 		}
 
-		accountManager.removeBeneficiary(accountId, beneficiaryName, new HashMap<String, Percentage>());
+		accountManager.removeBeneficiary(accountId, beneficiaryName, new HashMap<>());
 	}
 
 	/**

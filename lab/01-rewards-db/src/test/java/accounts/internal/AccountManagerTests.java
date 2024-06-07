@@ -1,7 +1,5 @@
 package accounts.internal;
 
-import org.junit.jupiter.api.Test;
-
 public class AccountManagerTests extends AbstractAccountManagerTests {
 
 	public AccountManagerTests() {

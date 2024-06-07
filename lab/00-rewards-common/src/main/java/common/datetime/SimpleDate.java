@@ -69,10 +69,9 @@ public class SimpleDate implements Serializable {
 	}
 
 	public boolean equals(Object day) {
-		if (!(day instanceof SimpleDate)) {
+		if (!(day instanceof SimpleDate other)) {
 			return false;
 		}
-		SimpleDate other = (SimpleDate) day;
 		return (base.equals(other.base));
 	}
 

@@ -9,7 +9,7 @@ import jakarta.persistence.Transient;
 
 /**
  * Restaurants calculate how much benefit may be awarded to an account for
- * dining based on a availability policy and a benefit percentage.
+ * dining based on an availability policy and a benefit percentage.
  */
 // TODO-05: Map this class using JPA Annotations.
 // - Use the following SQL statement in the schema.sql as a guidance.

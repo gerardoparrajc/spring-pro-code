@@ -21,6 +21,6 @@ public interface AccountRepository {
 	 * @return the account object
 	 */
 	// To refactor: right click on the method name -> Refactor -> Rename
-	public Account findByCreditCard(String creditCardNumber);
+	Account findByCreditCard(String creditCardNumber);
 
 }

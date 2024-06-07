@@ -16,7 +16,7 @@ public class RestaurantHealthCheck2 extends AbstractHealthIndicator {
     }
 
     @Override
-    protected void doHealthCheck(Health.Builder builder) throws Exception {
+    protected void doHealthCheck(Health.Builder builder) {
 
         Long restaurantCount = restaurantRepository.getRestaurantCount();
         if (restaurantCount > 0) {

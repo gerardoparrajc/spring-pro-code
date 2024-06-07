@@ -46,8 +46,8 @@ public class AccountClientTests {
 	 */
 	private static final String BASE_URL = "http://localhost:8080";
 
-	private RestTemplate restTemplate = new RestTemplate();
-	private Random random = new Random();
+	private final RestTemplate restTemplate = new RestTemplate();
+	private final Random random = new Random();
 
 	@Test
 	public void listAccounts() {

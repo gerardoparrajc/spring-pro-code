@@ -21,8 +21,8 @@ public class LoggingAspect {
     public final static String BEFORE = "'Before'";
     public final static String AROUND = "'Around'";
 
-	private Logger logger = LoggerFactory.getLogger(getClass());
-	private MonitorFactory monitorFactory;
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+	private final MonitorFactory monitorFactory;
 
 	
 	public LoggingAspect(MonitorFactory monitorFactory) {
@@ -49,7 +49,7 @@ public class LoggingAspect {
 	// - Write a pointcut expression to match on all update* methods
 	//	 on all Repository classes.
 
-	public Object monitor(ProceedingJoinPoint repositoryMethod) throws Throwable {
+	public Object monitor(ProceedingJoinPoint repositoryMethod) {
 		String name = createJoinPointTraceName(repositoryMethod);
 		Monitor monitor = monitorFactory.start(name);
 		try {

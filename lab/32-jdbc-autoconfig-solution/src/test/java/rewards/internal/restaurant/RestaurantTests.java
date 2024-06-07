@@ -56,7 +56,7 @@ public class RestaurantTests {
 	 */
 	private static class StubBenefitAvailibilityPolicy implements BenefitAvailabilityPolicy {
 
-		private boolean isBenefitAvailable;
+		private final boolean isBenefitAvailable;
 
 		public StubBenefitAvailibilityPolicy(boolean isBenefitAvailable) {
 			this.isBenefitAvailable = isBenefitAvailable;

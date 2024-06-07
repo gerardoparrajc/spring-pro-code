@@ -31,7 +31,7 @@ public class AccountWebClientTests {
      */
     private static final String BASE_URL = "http://localhost:";
 
-    private Random random = new Random();
+    private final Random random = new Random();
     private WebClient webClient;
 
     @BeforeEach
@@ -111,7 +111,7 @@ public class AccountWebClientTests {
                                                  .uri("/accounts")
                                                  .contentType(MediaType.APPLICATION_JSON)
                                                  .bodyValue(account)
-                                                 .exchangeToMono(response -> Mono.just(response))
+                                                 .exchangeToMono(Mono::just)
                                                  .block();
 
         URI newAccountLocation = new URI(clientResponse.headers().header("Location").get(0));
@@ -141,7 +141,7 @@ public class AccountWebClientTests {
                                   .uri("/accounts")
                                   .contentType(MediaType.APPLICATION_JSON)
                                   .bodyValue(account)
-                                  .exchangeToMono(response -> Mono.just(response))
+                                  .exchangeToMono(Mono::just)
                                   .block();
 
         //assertEquals(HttpStatus.CONFLICT, clientResponse.statusCode());
@@ -157,7 +157,7 @@ public class AccountWebClientTests {
                                                  .uri(addUrl, 1)
                                                  .contentType(MediaType.APPLICATION_JSON)
                                                  .bodyValue("David")
-                                                 .exchangeToMono(response -> Mono.just(response))
+                                                 .exchangeToMono(Mono::just)
                                                  .block();
 
         URI newBeneficiaryLocation = new URI(clientResponse.headers().header("Location").get(0));
@@ -173,13 +173,13 @@ public class AccountWebClientTests {
 
         clientResponse = webClient.delete()
                  .uri(newBeneficiaryLocation)
-                 .exchangeToMono(response -> Mono.just(response))
+                 .exchangeToMono(Mono::just)
                  .block();
 
         clientResponse = webClient.get()
                  .uri(newBeneficiaryLocation)
                  .accept(MediaType.APPLICATION_JSON)
-                 .exchangeToMono(response -> Mono.just(response))
+                 .exchangeToMono(Mono::just)
                  .block();
 
         assertEquals(HttpStatus.NOT_FOUND, clientResponse.statusCode());

@@ -26,7 +26,7 @@ public class StubRestaurantRepository implements RestaurantRepository {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	private Map<String, Restaurant> restaurantsByMerchantNumber = new HashMap<String, Restaurant>();
+	private final Map<String, Restaurant> restaurantsByMerchantNumber = new HashMap<>();
 
 	/**
 	 * Creates a single test restaurant with an 8% benefit policy. Also logs
