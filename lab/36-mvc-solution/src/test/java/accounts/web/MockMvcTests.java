@@ -18,10 +18,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * test, as if it was running in a container, so far more checks are possible
  * than with the simple {@link AccountControllerTests}.
  */
-@SpringBootTest(webEnvironment = WebEnvironment.MOCK)
+@SpringBootTest
 @AutoConfigureMockMvc
-@ActiveProfiles("jpa")
-@ComponentScan({ "accounts.web", "config:" })
 public class MockMvcTests {
 
 	@Autowired

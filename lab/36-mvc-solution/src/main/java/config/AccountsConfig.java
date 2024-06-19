@@ -17,7 +17,6 @@ import accounts.internal.JpaAccountManager;
  */
 @Configuration
 @EntityScan("rewards.internal")
-@EnableTransactionManagement
 public class AccountsConfig implements WebMvcConfigurer {
 
 	/**
