@@ -1,7 +1,7 @@
 buildscript {
     ext {
-        springBootVersion = "3.0.13"
-        easyMockVersion = "5.2"
+        springBootVersion = "3.3.0"
+        easyMockVersion = "5.2.0"
         jmonVersion = "2.82"
     }
 
@@ -18,7 +18,7 @@ allprojects {
     apply plugin: 'maven-publish'
 
     group = 'io.spring.training.core-spring'
-    version = '5.3.23'
+    version = '3.3.0'
 }
 
 subprojects {
