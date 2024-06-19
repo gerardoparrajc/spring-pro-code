@@ -26,7 +26,6 @@ public class LoggingAspect {
 
 	
 	public LoggingAspect(MonitorFactory monitorFactory) {
-		super();
 		this.monitorFactory = monitorFactory;
 	}
 
@@ -49,7 +48,7 @@ public class LoggingAspect {
 	// - Write a pointcut expression to match on all update* methods
 	//	 on all Repository classes.
 
-	public Object monitor(ProceedingJoinPoint repositoryMethod) {
+	public Object monitor(ProceedingJoinPoint repositoryMethod) throws Throwable {
 		String name = createJoinPointTraceName(repositoryMethod);
 		Monitor monitor = monitorFactory.start(name);
 		try {
