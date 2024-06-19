@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  */
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes={SystemTestConfig.class})
-@EnableAutoConfiguration
 public class RewardNetworkTests {
 
     /**

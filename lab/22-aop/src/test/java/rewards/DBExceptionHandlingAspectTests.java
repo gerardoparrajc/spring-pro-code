@@ -17,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { DbExceptionTestConfig.class })
-@EnableAutoConfiguration
 public class DBExceptionHandlingAspectTests {
 
     @Autowired
