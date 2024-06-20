@@ -1,6 +1,5 @@
 package accounts.client;
 
-import accounts.RestWsApplication;
 import common.money.Percentage;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +15,7 @@ import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(classes = RestWsApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class AccountClientTests {
     @LocalServerPort
     private int port;
