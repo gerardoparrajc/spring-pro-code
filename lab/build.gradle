@@ -1,7 +1,7 @@
 buildscript {
     ext {
         springBootVersion = "3.3.1"
-        easyMockVersion = "5.2.0"
+        easyMockVersion = "5.2"
         jmonVersion = "2.82"
     }
 
@@ -44,14 +44,17 @@ subprojects {
         testImplementation "org.springframework.boot:spring-boot-starter-test"
     }
 
-    sourceCompatibility = '17'
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
 
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
     }
 
-    test {
+    tasks.named('test') {
         useJUnitPlatform()
     }
-
 }
