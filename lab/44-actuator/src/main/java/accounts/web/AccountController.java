@@ -47,9 +47,11 @@ public class AccountController {
 	 * Provide a list of all accounts.
 	 *
      * TODO-12: Add Timer metric
+	 * - Add "spring-boot-starter-aop" starter to the pom.xml or the build.gradle
 	 * - Add @Timed annotation to this method
      * - Set the metric name to "account.timer"
      * - Set a extra tag with "source"/"accountSummary" key/value pair
+	 * - Add the property to enable scanning of the @Timed annotation in the application.properties
 	 */
 	@GetMapping(value = "/accounts")
 	public List<Account> accountSummary() {
