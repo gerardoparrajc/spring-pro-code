@@ -15,7 +15,7 @@ public class DBExceptionHandlingAspect {
 	
 	public static final String EMAIL_FAILURE_MSG = "Failed sending an email to Mister Smith : ";
 
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	@AfterThrowing(value="execution(public * rewards.internal.*.*Repository.*(..))", throwing="e")
 	public void implExceptionHandling(RewardDataAccessException e) { 

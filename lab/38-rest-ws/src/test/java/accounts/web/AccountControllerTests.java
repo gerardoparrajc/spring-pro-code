@@ -18,7 +18,7 @@ public class AccountControllerTests {
 	private AccountController controller;
 
 	@BeforeEach
-	public void setUp() throws Exception {
+	public void setUp() {
 		controller = new AccountController(new StubAccountManager());
 	}
 

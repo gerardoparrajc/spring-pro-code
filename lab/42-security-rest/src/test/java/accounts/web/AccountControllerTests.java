@@ -22,7 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.*;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -151,7 +151,7 @@ public class AccountControllerTests {
     @WithMockUser(roles = {"ADMIN"})
     public void accountSummary_with_ADMIN_role_should_return_200() throws Exception {
 
-        List<Account> testAccounts = Arrays.asList(new Account("123456789", "John Doe"));
+        List<Account> testAccounts = List.of(new Account("123456789", "John Doe"));
         given(accountManager.getAllAccounts()).willReturn(testAccounts);
 
         mockMvc.perform(get("/accounts"))
@@ -191,7 +191,7 @@ public class AccountControllerTests {
     //    this testing because security failure will prevent
     //    calling a method of a dependency.)
     @Test
-    public void createAccount_with_USER_role_should_return_403() throws Exception {
+    public void createAccount_with_USER_role_should_return_403() {
 
 
 
@@ -280,8 +280,7 @@ public class AccountControllerTests {
     protected static String asJsonString(final Object obj) {
         try {
             final ObjectMapper mapper = new ObjectMapper();
-            final String jsonContent = mapper.writeValueAsString(obj);
-            return jsonContent;
+            return mapper.writeValueAsString(obj);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

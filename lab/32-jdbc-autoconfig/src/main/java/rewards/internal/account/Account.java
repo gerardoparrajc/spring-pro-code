@@ -25,7 +25,7 @@ public class Account extends Entity {
 
 	private String name;
 
-	private Set<Beneficiary> beneficiaries = new HashSet<Beneficiary>();
+	private Set<Beneficiary> beneficiaries = new HashSet<>();
 
 	@SuppressWarnings("unused")
 	private Account() {
@@ -85,11 +85,7 @@ public class Account extends Entity {
 				return false;
 			}
 		}
-		if (totalPercentage.equals(Percentage.oneHundred())) {
-			return true;
-		} else {
-			return false;
-		}
+		return totalPercentage.equals(Percentage.oneHundred());
 	}
 
 	/**
@@ -112,7 +108,7 @@ public class Account extends Entity {
 	 * @return the individual beneficiary distributions
 	 */
 	private Set<Distribution> distribute(MonetaryAmount amount) {
-		Set<Distribution> distributions = new HashSet<Distribution>(beneficiaries.size());
+		Set<Distribution> distributions = new HashSet<>(beneficiaries.size());
 		for (Beneficiary beneficiary : beneficiaries) {
 			MonetaryAmount distributionAmount = amount.multiplyBy(beneficiary.getAllocationPercentage());
 			beneficiary.credit(distributionAmount);

@@ -25,7 +25,7 @@ public class AccountControllerBootTests {
 	// TODO-10: Write positive test for GET request for an account
 	// - Uncomment the code and run the test and verify it succeeds
 	@Test
-	public void accountDetails() throws Exception {
+	public void accountDetails() {
 
 		//given(accountManager.getAccount(0L))
 		//		.willReturn(new Account("1234567890", "John Doe"));
@@ -45,7 +45,7 @@ public class AccountControllerBootTests {
 	// - Write code between the "given" and "verify" statements
 	// - Run the test and verify it succeeds
 	@Test
-	public void accountDetailsFail() throws Exception {
+	public void accountDetailsFail() {
 
 		//given(accountManager.getAccount(any(Long.class)))
 		//		.willThrow(new IllegalArgumentException("No such account with id " + 0L));
@@ -64,7 +64,7 @@ public class AccountControllerBootTests {
 	// - Write code between the "given" and "verify" statements
 	// - Run the test and verify it succeeds
 	@Test
-	public void createAccount() throws Exception {
+	public void createAccount() {
 
 		//Account testAccount = new Account("1234512345", "Mary Jones");
 		//testAccount.setEntityId(21L);
@@ -89,8 +89,7 @@ public class AccountControllerBootTests {
 	protected static String asJsonString(final Object obj) {
 		try {
 			final ObjectMapper mapper = new ObjectMapper();
-			final String jsonContent = mapper.writeValueAsString(obj);
-			return jsonContent;
+			return mapper.writeValueAsString(obj);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

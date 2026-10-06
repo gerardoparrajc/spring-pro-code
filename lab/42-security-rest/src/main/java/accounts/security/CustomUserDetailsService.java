@@ -25,7 +25,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Primary
 public class CustomUserDetailsService implements UserDetailsService {
 
-	private PasswordEncoder passwordEncoder;
+	private final PasswordEncoder passwordEncoder;
 
 	public CustomUserDetailsService(PasswordEncoder passwordEncoder) {
 		this.passwordEncoder = passwordEncoder;

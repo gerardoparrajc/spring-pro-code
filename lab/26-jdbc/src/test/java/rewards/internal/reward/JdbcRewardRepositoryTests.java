@@ -40,7 +40,7 @@ public class JdbcRewardRepositoryTests {
 	private JdbcTemplate jdbcTemplate;
 
 	@BeforeEach
-	public void setUp() throws Exception {
+	public void setUp() {
 		dataSource = createTestDataSource();
 		repository = new JdbcRewardRepository(dataSource);
 		jdbcTemplate = new JdbcTemplate(dataSource);
@@ -63,7 +63,7 @@ public class JdbcRewardRepositoryTests {
 		verifyRewardInserted(confirmation, dining);
 	}
 
-	private void verifyRewardInserted(RewardConfirmation confirmation, Dining dining) throws SQLException {
+	private void verifyRewardInserted(RewardConfirmation confirmation, Dining dining) {
 		assertEquals(1, getRewardCount());
 
 		//	TODO-02: Use JdbcTemplate to query for a map of all column values
@@ -89,7 +89,7 @@ public class JdbcRewardRepositoryTests {
 		assertEquals(SimpleDate.today().asDate(), values.get("DINING_DATE"));
 	}
 
-	private int getRewardCount() throws SQLException {
+	private int getRewardCount() {
 		// TODO-01: Use JdbcTemplate to query for the number of rows in the T_REWARD table
 		// - Use "SELECT count(*) FROM T_REWARD" as SQL statement
 		return -1;

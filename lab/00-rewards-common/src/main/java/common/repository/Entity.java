@@ -1,7 +1,7 @@
 package common.repository;
 
 /**
- * A base class for all entities that use a internal long identifier for
+ * A base class for all entities that use an internal long identifier for
  * tracking entity identity.
  */
 public class Entity {

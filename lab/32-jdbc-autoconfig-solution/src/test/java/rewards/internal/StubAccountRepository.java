@@ -18,7 +18,7 @@ import java.util.Map;
  */
 public class StubAccountRepository implements AccountRepository {
 
-	private Map<String, Account> accountsByCreditCard = new HashMap<String, Account>();
+	private final Map<String, Account> accountsByCreditCard = new HashMap<>();
 
 	public StubAccountRepository() {
 		Account account = new Account("123456789", "Keith and Keri Donald");

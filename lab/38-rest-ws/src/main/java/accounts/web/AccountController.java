@@ -4,7 +4,6 @@ import accounts.AccountManager;
 import common.money.Percentage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,12 +22,11 @@ public class AccountController {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	private AccountManager accountManager;
+	private final AccountManager accountManager;
 
 	/**
 	 * Creates a new AccountController with a given account manager.
 	 */
-	@Autowired
 	public AccountController(AccountManager accountManager) {
 		this.accountManager = accountManager;
 	}
@@ -99,8 +97,8 @@ public class AccountController {
 	 * given id.
 	 */
 	@GetMapping(value = "/accounts/{accountId}/beneficiaries/{beneficiaryName}")
-	public Beneficiary getBeneficiary(@PathVariable("accountId") int accountId,
-			@PathVariable("beneficiaryName") String beneficiaryName) {
+	public Beneficiary getBeneficiary(@PathVariable int accountId,
+			@PathVariable String beneficiaryName) {
 		return retrieveAccount(accountId).getBeneficiary(beneficiaryName);
 	}
 
@@ -145,7 +143,7 @@ public class AccountController {
 			throw new RuntimeException("Logic to rebalance Beneficiaries not defined.");
 		}
 
-		accountManager.removeBeneficiary(accountId, beneficiaryName, new HashMap<String, Percentage>());
+		accountManager.removeBeneficiary(accountId, beneficiaryName, new HashMap<>());
 	}
 
 	/**

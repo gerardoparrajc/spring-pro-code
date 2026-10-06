@@ -37,8 +37,8 @@ public abstract class AbstractAccountManagerTests {
 
 	public AbstractAccountManagerTests() {
 		logger = LoggerFactory.getLogger(getClass());
-		if (logger instanceof ch.qos.logback.classic.Logger)
-			((ch.qos.logback.classic.Logger) logger).setLevel(Level.INFO);
+		if (logger instanceof ch.qos.logback.classic.Logger logger1)
+			logger1.setLevel(Level.INFO);
 	}
 
 	/**
@@ -128,7 +128,7 @@ public abstract class AbstractAccountManagerTests {
 	@Test
 	@Transactional
 	public void updateAccountBeneficiaries() {
-		Map<String, Percentage> allocationPercentages = new HashMap<String, Percentage>();
+		Map<String, Percentage> allocationPercentages = new HashMap<>();
 		allocationPercentages.put("Annabelle", Percentage.valueOf("25%"));
 		allocationPercentages.put("Corgan", Percentage.valueOf("75%"));
 		accountManager.updateBeneficiaryAllocationPercentages(0L, allocationPercentages);
@@ -150,7 +150,7 @@ public abstract class AbstractAccountManagerTests {
 	@Test
 	@Transactional
 	public void removeBeneficiary() {
-		Map<String, Percentage> allocationPercentages = new HashMap<String, Percentage>();
+		Map<String, Percentage> allocationPercentages = new HashMap<>();
 		allocationPercentages.put("Corgan", Percentage.oneHundred());
 		accountManager.removeBeneficiary(0L, "Annabelle", allocationPercentages);
 		Account account = accountManager.getAccount(0L);

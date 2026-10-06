@@ -29,7 +29,7 @@ public class AccountControllerTests {
 	private Counter counter;
 
 	@BeforeEach
-	public void setUp() throws Exception {
+	public void setUp() {
 		registry = mock(MeterRegistry.class);
 		counter = mock(Counter.class);
 		doReturn(counter).when(registry).counter(any(String.class), any(String.class), any(String.class));

@@ -5,7 +5,7 @@ import rewards.internal.monitor.MonitorStatistics;
 
 public class JamonMonitor implements Monitor, MonitorStatistics {
 
-	private com.jamonapi.Monitor monitor;
+	private final com.jamonapi.Monitor monitor;
 
 	public JamonMonitor(com.jamonapi.Monitor monitor) {
 		this.monitor = monitor;

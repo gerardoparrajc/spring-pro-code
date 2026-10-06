@@ -17,5 +17,5 @@ public interface RestaurantRepository {
 	 * @return the restaurant
 	 */
 	// To refactor: right click on the method name -> Refactor -> Rename
-	public Restaurant findByMerchantNumber(String merchantNumber);
+	Restaurant findByMerchantNumber(String merchantNumber);
 }

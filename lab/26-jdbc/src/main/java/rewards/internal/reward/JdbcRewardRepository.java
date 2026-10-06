@@ -36,7 +36,7 @@ import java.sql.*;
 
 public class JdbcRewardRepository implements RewardRepository {
 
-	private DataSource dataSource;
+	private final DataSource dataSource;
 
 	public JdbcRewardRepository(DataSource dataSource) {
 		this.dataSource = dataSource;

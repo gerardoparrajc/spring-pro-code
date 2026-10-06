@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class JdbcAccountRepository implements AccountRepository {
 
-	private JdbcTemplate jdbcTemplate;
+	private final JdbcTemplate jdbcTemplate;
 
 	public JdbcAccountRepository(JdbcTemplate jdbcTemplate) {
 
@@ -26,15 +26,17 @@ public class JdbcAccountRepository implements AccountRepository {
 	 * Extracts an Account object from rows returned from a join of T_ACCOUNT and
 	 * T_ACCOUNT_BENEFICIARY.
 	 */
-	private ResultSetExtractor<Account> accountExtractor = new AccountExtractor();
+	private final ResultSetExtractor<Account> accountExtractor = new AccountExtractor();
 
 	public Account findByCreditCard(String creditCardNumber) {
-		String sql = "select a.ID as ID, a.NUMBER as ACCOUNT_NUMBER, a.NAME as ACCOUNT_NAME,"
-				+ " c.NUMBER as CREDIT_CARD_NUMBER,"
-				+ " b.NAME as BENEFICIARY_NAME, b.ALLOCATION_PERCENTAGE as BENEFICIARY_ALLOCATION_PERCENTAGE,"
-				+ " b.SAVINGS as BENEFICIARY_SAVINGS"
-				+ " from T_ACCOUNT a, T_ACCOUNT_BENEFICIARY b, T_ACCOUNT_CREDIT_CARD c"
-				+ " where ID = b.ACCOUNT_ID and ID = c.ACCOUNT_ID and c.NUMBER = ?";
+		String sql = """
+				select a.ID as ID, a.NUMBER as ACCOUNT_NUMBER, a.NAME as ACCOUNT_NAME,\
+				 c.NUMBER as CREDIT_CARD_NUMBER,\
+				 b.NAME as BENEFICIARY_NAME, b.ALLOCATION_PERCENTAGE as BENEFICIARY_ALLOCATION_PERCENTAGE,\
+				 b.SAVINGS as BENEFICIARY_SAVINGS\
+				 from T_ACCOUNT a, T_ACCOUNT_BENEFICIARY b, T_ACCOUNT_CREDIT_CARD c\
+				 where ID = b.ACCOUNT_ID and ID = c.ACCOUNT_ID and c.NUMBER = ?\
+				""";
 		return jdbcTemplate.query(sql, accountExtractor, creditCardNumber);
 	}
 
@@ -47,7 +49,7 @@ public class JdbcAccountRepository implements AccountRepository {
 
 	/**
 	 * Map the rows returned from the join of T_ACCOUNT and T_ACCOUNT_BENEFICIARY to
-	 * an fully-reconstituted Account aggregate.
+	 * a fully-reconstituted Account aggregate.
 	 * 
 	 * @param rs
 	 *            the set of rows returned from the query

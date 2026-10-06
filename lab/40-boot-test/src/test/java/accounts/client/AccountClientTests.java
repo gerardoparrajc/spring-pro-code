@@ -46,8 +46,8 @@ public class AccountClientTests {
 	 */
 	private static final String BASE_URL = "http://localhost:8080";
 
-	private RestTemplate restTemplate = new RestTemplate();
-	private Random random = new Random();
+	private final RestTemplate restTemplate = new RestTemplate();
+	private final Random random = new Random();
 
 	@Test
 	public void listAccounts() {
@@ -74,7 +74,7 @@ public class AccountClientTests {
 	public void createAccount() {
 		String url = BASE_URL + "/accounts";
 		// use a random account number to avoid conflict
-		String number = String.format("12345%4d", random.nextInt(10000));
+		String number = "12345%4d".formatted(random.nextInt(10000));
 		Account account = new Account(number, "John Doe");
 		account.addBeneficiary("Jane Doe");
 		URI newAccountLocation = restTemplate.postForLocation(url, account);

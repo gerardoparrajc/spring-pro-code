@@ -33,7 +33,7 @@ public class JdbcRewardRepositoryTests {
 	private JdbcTemplate jdbcTemplate;
 
 	@BeforeEach
-	public void setUp() throws Exception {
+	public void setUp() {
 		dataSource = createTestDataSource();
 		jdbcTemplate = createTestJdbcTemplate();
 		repository = new JdbcRewardRepository(jdbcTemplate);
@@ -57,7 +57,7 @@ public class JdbcRewardRepositoryTests {
 		verifyRewardInserted(confirmation, dining);
 	}
 
-	private void verifyRewardInserted(RewardConfirmation confirmation, Dining dining) throws SQLException {
+	private void verifyRewardInserted(RewardConfirmation confirmation, Dining dining) {
 		assertEquals(1, getRewardCount());
 		String sql = "select * from T_REWARD where CONFIRMATION_NUMBER = ?";
 		Map<String, Object> values = jdbcTemplate.queryForMap(sql, confirmation.getConfirmationNumber());
@@ -74,7 +74,7 @@ public class JdbcRewardRepositoryTests {
 		assertEquals(SimpleDate.today().asDate(), values.get("DINING_DATE"));
 	}
 
-	private int getRewardCount() throws SQLException {
+	private int getRewardCount() {
 		String sql = "select count(*) from T_REWARD";
 		return jdbcTemplate.queryForObject(sql, Integer.class);
 	}

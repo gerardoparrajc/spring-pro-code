@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class JdbcRewardRepositoryTests extends AbstractRewardRepositoryTests {
 
 	@BeforeEach
-	public void setUp() throws Exception {
+	public void setUp() {
 		dataSource = createTestDataSource();
 		rewardRepository = new JdbcRewardRepository(dataSource);
 	}

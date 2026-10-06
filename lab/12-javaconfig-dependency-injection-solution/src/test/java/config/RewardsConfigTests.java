@@ -26,9 +26,9 @@ import rewards.internal.reward.RewardRepository;
  */
 public class RewardsConfigTests {
 	// Provide a mock for testing
-	private DataSource dataSource = Mockito.mock(DataSource.class);
+	private final DataSource dataSource = Mockito.mock(DataSource.class);
 
-	private RewardsConfig rewardsConfig = new RewardsConfig(dataSource);
+	private final RewardsConfig rewardsConfig = new RewardsConfig(dataSource);
 
 	@Test
 	public void getBeans() {
@@ -55,7 +55,7 @@ public class RewardsConfigTests {
 	 * @param repository
 	 */
 	private void checkDataSource(Object repository) {
-		Class<? extends Object> repositoryClass = repository.getClass();
+		Class<?> repositoryClass = repository.getClass();
 
 		try {
 			Field dataSource = repositoryClass.getDeclaredField("dataSource");

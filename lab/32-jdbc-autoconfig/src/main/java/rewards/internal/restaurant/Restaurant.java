@@ -9,7 +9,7 @@ import rewards.internal.account.Account;
 /**
  * A restaurant establishment in the network. Like AppleBee's.
  * 
- * Restaurants calculate how much benefit may be awarded to an account for dining based on a availability policy and a
+ * Restaurants calculate how much benefit may be awarded to an account for dining based on an availability policy and a
  * benefit percentage.
  */
 public class Restaurant extends Entity {

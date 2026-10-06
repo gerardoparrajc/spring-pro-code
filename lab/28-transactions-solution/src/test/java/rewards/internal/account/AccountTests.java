@@ -16,7 +16,7 @@ import common.money.Percentage;
  */
 public class AccountTests {
 
-	private Account account = new Account("1", "Keith and Keri Donald");
+	private final Account account = new Account("1", "Keith and Keri Donald");
 
 	@Test
 	public void accountIsValid() {

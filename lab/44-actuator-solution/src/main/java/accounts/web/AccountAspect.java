@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AccountAspect {
 
-    private Counter counter;
+    private final Counter counter;
 
     public AccountAspect(MeterRegistry meterRegistry) {
         this.counter = meterRegistry.counter("account.fetch", "type", "fromAspect");

@@ -23,7 +23,7 @@ public class JdbcAccountRepository implements AccountRepository {
 	/**
 	 * Extracts an Account object from rows returned from a join of T_ACCOUNT and T_ACCOUNT_BENEFICIARY.
 	 */
-	private ResultSetExtractor<Account> accountExtractor = new AccountExtractor();
+	private final ResultSetExtractor<Account> accountExtractor = new AccountExtractor();
 
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -42,7 +42,7 @@ public class JdbcAccountRepository implements AccountRepository {
 	}
 
 	/**
-	 * Map the rows returned from the join of T_ACCOUNT and T_ACCOUNT_BENEFICIARY to an fully-reconstituted Account
+	 * Map the rows returned from the join of T_ACCOUNT and T_ACCOUNT_BENEFICIARY to a fully-reconstituted Account
 	 * aggregate.
 	 * 
 	 * @param rs the set of rows returned from the query

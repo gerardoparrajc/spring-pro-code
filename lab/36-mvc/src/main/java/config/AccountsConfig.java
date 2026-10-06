@@ -1,6 +1,6 @@
 package config;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +17,6 @@ import accounts.internal.JpaAccountManager;
  */
 @Configuration
 @EntityScan("rewards.internal")
-@EnableTransactionManagement
 public class AccountsConfig implements WebMvcConfigurer {
 
 	/**

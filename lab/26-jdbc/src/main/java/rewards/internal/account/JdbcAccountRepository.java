@@ -27,7 +27,7 @@ import java.sql.SQLException;
 //   object using the given DataSource object.
 public class JdbcAccountRepository implements AccountRepository {
 
-	private DataSource dataSource;
+	private final DataSource dataSource;
 
 	public JdbcAccountRepository(DataSource dataSource) {
 		this.dataSource = dataSource;
@@ -40,12 +40,14 @@ public class JdbcAccountRepository implements AccountRepository {
 	//   mapAccount() method, which is provided in this class, to do all the work.
     // - Run the JdbcAccountRepositoryTests class. It should pass.
 	public Account findByCreditCard(String creditCardNumber) {
-		String sql = "select a.ID as ID, a.NUMBER as ACCOUNT_NUMBER, a.NAME as ACCOUNT_NAME, c.NUMBER as CREDIT_CARD_NUMBER, " +
-			"	b.NAME as BENEFICIARY_NAME, b.ALLOCATION_PERCENTAGE as BENEFICIARY_ALLOCATION_PERCENTAGE, b.SAVINGS as BENEFICIARY_SAVINGS " +
-			"from T_ACCOUNT a, T_ACCOUNT_CREDIT_CARD c " +
-			"left outer join T_ACCOUNT_BENEFICIARY b " +
-			"on a.ID = b.ACCOUNT_ID " +
-			"where c.ACCOUNT_ID = a.ID and c.NUMBER = ?";
+		String sql = """
+			select a.ID as ID, a.NUMBER as ACCOUNT_NUMBER, a.NAME as ACCOUNT_NAME, c.NUMBER as CREDIT_CARD_NUMBER, \
+				b.NAME as BENEFICIARY_NAME, b.ALLOCATION_PERCENTAGE as BENEFICIARY_ALLOCATION_PERCENTAGE, b.SAVINGS as BENEFICIARY_SAVINGS \
+			from T_ACCOUNT a, T_ACCOUNT_CREDIT_CARD c \
+			left outer join T_ACCOUNT_BENEFICIARY b \
+			on a.ID = b.ACCOUNT_ID \
+			where c.ACCOUNT_ID = a.ID and c.NUMBER = ?\
+			""";
 		
 		Account account = null;
 		Connection conn = null;
@@ -92,11 +94,8 @@ public class JdbcAccountRepository implements AccountRepository {
 	// - Rerun the JdbcAccountRepositoryTests and verify it passes
 	public void updateBeneficiaries(Account account) {
 		String sql = "update T_ACCOUNT_BENEFICIARY SET SAVINGS = ? where ACCOUNT_ID = ? and NAME = ?";
-		Connection conn = null;
-		PreparedStatement ps = null;
-		try {
-			conn = dataSource.getConnection();
-			ps = conn.prepareStatement(sql);
+		try (Connection conn = dataSource.getConnection();
+			 PreparedStatement ps = conn.prepareStatement(sql)) {
 			for (Beneficiary beneficiary : account.getBeneficiaries()) {
 				ps.setBigDecimal(1, beneficiary.getSavings().asBigDecimal());
 				ps.setLong(2, account.getEntityId());
@@ -105,26 +104,11 @@ public class JdbcAccountRepository implements AccountRepository {
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException("SQL exception occurred updating beneficiary savings", e);
-		} finally {
-			if (ps != null) {
-				try {
-					// Close to prevent database cursor exhaustion
-					ps.close();
-				} catch (SQLException ex) {
-				}
-			}
-			if (conn != null) {
-				try {
-					// Close to prevent database connection exhaustion
-					conn.close();
-				} catch (SQLException ex) {
-				}
-			}
 		}
 	}
 
 	/**
-	 * Map the rows returned from the join of T_ACCOUNT and T_ACCOUNT_BENEFICIARY to an fully-reconstituted Account
+	 * Map the rows returned from the join of T_ACCOUNT and T_ACCOUNT_BENEFICIARY to a fully-reconstituted Account
 	 * aggregate.
 	 * 
 	 * @param rs the set of rows returned from the query

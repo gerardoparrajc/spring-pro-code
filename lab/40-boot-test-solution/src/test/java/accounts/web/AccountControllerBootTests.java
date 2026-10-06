@@ -11,7 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import rewards.internal.account.Account;
 
-import javax.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Arrays;
 import java.util.List;
@@ -73,7 +73,7 @@ public class AccountControllerBootTests {
     @Test
     public void accountSummary() throws Exception {
 
-        List<Account> testAccounts = Arrays.asList(new Account("123456789", "John Doe"));
+        List<Account> testAccounts = List.of(new Account("123456789", "John Doe"));
         given(accountManager.getAllAccounts())
 				.willReturn(testAccounts);
 
@@ -160,8 +160,7 @@ public class AccountControllerBootTests {
     protected static String asJsonString(final Object obj) {
         try {
             final ObjectMapper mapper = new ObjectMapper();
-            final String jsonContent = mapper.writeValueAsString(obj);
-            return jsonContent;
+            return mapper.writeValueAsString(obj);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

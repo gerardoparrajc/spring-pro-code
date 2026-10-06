@@ -21,12 +21,11 @@ public class LoggingAspect {
     public final static String BEFORE = "'Before'";
     public final static String AROUND = "'Around'";
 
-	private Logger logger = LoggerFactory.getLogger(getClass());
-	private MonitorFactory monitorFactory;
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+	private final MonitorFactory monitorFactory;
 
 	
 	public LoggingAspect(MonitorFactory monitorFactory) {
-		super();
 		this.monitorFactory = monitorFactory;
 	}
 

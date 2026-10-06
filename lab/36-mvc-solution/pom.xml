@@ -10,7 +10,7 @@
      <parent>
           <groupId>io.spring.training.core-spring</groupId>
           <artifactId>parentProject</artifactId>
-          <version>5.3.23</version>
+          <version>3.3.1</version>
      </parent>
      <properties>
           <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -61,17 +61,17 @@
           </dependency>
      </dependencies>
      <build>
-          <plugins>
-               <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-               </plugin>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
 
-               <!-- WAR Support -->
-               <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-               </plugin>
+            <!-- WAR Support -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+            </plugin>
           </plugins>
      </build>
 </project>

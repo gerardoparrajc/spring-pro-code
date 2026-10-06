@@ -29,11 +29,11 @@ import common.money.MonetaryAmount;
  */
 public class RewardNetworkImpl implements RewardNetwork {
 
-	private AccountRepository accountRepository;
+	private final AccountRepository accountRepository;
 
-	private RestaurantRepository restaurantRepository;
+	private final RestaurantRepository restaurantRepository;
 
-	private RewardRepository rewardRepository;
+	private final RewardRepository rewardRepository;
 
 	/**
 	 * Creates a new reward network.
@@ -52,7 +52,7 @@ public class RewardNetworkImpl implements RewardNetwork {
 	// Switch the propagation level to require a NEW transaction whenever invoked.  
 	
 	// TODO-01: Annotate this method as needing transactional behavior
-	// Make sure to use the annotation from Spring not from Java EE.
+	// Make sure to use the annotation from Spring not from Jakarta EE.
 	
 	public RewardConfirmation rewardAccountFor(Dining dining) {
 		Account account = accountRepository.findByCreditCard(dining.getCreditCardNumber());

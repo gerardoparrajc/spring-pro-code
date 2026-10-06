@@ -17,7 +17,7 @@ import common.money.Percentage;
  */
 public class AccountTests {
 
-	private Account account = new Account("1", "Keith and Keri Donald");
+	private final Account account = new Account("1", "Keith and Keri Donald");
 
 	@Test
 	public void accountIsValid() {
@@ -57,7 +57,7 @@ public class AccountTests {
 	}
 	
 	@Test
-	public void throwIllegalStateExceptionWhenContributionIsInvalid() throws Exception {
+	public void throwIllegalStateExceptionWhenContributionIsInvalid() {
 		Throwable exception = assertThrows(IllegalStateException.class,
 				() -> {
 					account.addBeneficiary("Annabelle", Percentage.valueOf("50%"));

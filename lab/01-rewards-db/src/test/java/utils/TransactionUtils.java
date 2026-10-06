@@ -36,18 +36,16 @@ public class TransactionUtils {
 		this.transactionManager = transactionManager;
 
 		logger = LoggerFactory.getLogger(getClass());
-		if (logger instanceof ch.qos.logback.classic.Logger)
-			((ch.qos.logback.classic.Logger) logger).setLevel(Level.INFO);
+		if (logger instanceof ch.qos.logback.classic.Logger logger1)
+			logger1.setLevel(Level.INFO);
 
 	}
 
 	/**
 	 * Begin a new transaction, ensuring one is not running already
-	 * 
-	 * @throws Exception
-	 *             A transaction is already running.
+	 *
 	 */
-	public void beginTransaction() throws Exception {
+	public void beginTransaction() {
 		// Make sure no transaction is running
 		try {
 			transactionStatus = transactionManager
@@ -68,11 +66,9 @@ public class TransactionUtils {
 
 	/**
 	 * Rollback the current transaction - there must be one.
-	 * 
-	 * @throws Exception
-	 *             A transaction is NOT already running.
+	 *
 	 */
-	public void rollbackTransaction() throws Exception {
+	public void rollbackTransaction() {
 		// Make sure an exception is running
 		try {
 			transactionManager
@@ -142,7 +138,6 @@ public class TransactionUtils {
 			logger.info("TRANSACTION EXISTS - new ? " + transaction.isNewTransaction());
 			return true;
 		} catch (Exception e) {
-			System.out.println(e);
 			logger.error("NO TRANSACTION: " + e);
 			return false;
 		}

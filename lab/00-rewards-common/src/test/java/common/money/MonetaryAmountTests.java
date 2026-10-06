@@ -38,19 +38,19 @@ public class MonetaryAmountTests {
 	@Test
 	public void testMultiplyByDecimal() {
 		MonetaryAmount amt = MonetaryAmount.valueOf("100.005");
-		assertEquals(MonetaryAmount.valueOf("8.00"), amt.multiplyBy(new BigDecimal(0.08)));
+		assertEquals(MonetaryAmount.valueOf("8.00"), amt.multiplyBy(new BigDecimal("0.08")));
 	}
 
 	@Test
 	public void testDivideByMonetaryAmount() {
 		MonetaryAmount amt = MonetaryAmount.valueOf("100.005");
-		assertEquals(new BigDecimal(12.5), amt.divide(MonetaryAmount.valueOf("8.00")));
+		assertEquals(new BigDecimal("12.5"), amt.divide(MonetaryAmount.valueOf("8.00")));
 	}
 
 	@Test
 	public void testDivideByDecimal() {
 		MonetaryAmount amt = MonetaryAmount.valueOf("100.005");
-		assertEquals(MonetaryAmount.valueOf("8.00"), amt.divideBy(new BigDecimal(12.5)));
+		assertEquals(MonetaryAmount.valueOf("8.00"), amt.divideBy(new BigDecimal("12.5")));
 	}
 
 	@Test

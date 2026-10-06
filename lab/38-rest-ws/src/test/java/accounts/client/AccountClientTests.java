@@ -18,8 +18,8 @@ public class AccountClientTests {
 
 	private static final String BASE_URL = "http://localhost:8080";
 	
-	private RestTemplate restTemplate = new RestTemplate();
-	private Random random = new Random();
+	private final RestTemplate restTemplate = new RestTemplate();
+	private final Random random = new Random();
 	
 	@Test
 	@Disabled
@@ -57,7 +57,7 @@ public class AccountClientTests {
 	@Disabled
 	public void createAccount() {
 		// Use a unique number to avoid conflicts
-		String number = String.format("12345%4d", random.nextInt(10000));
+		String number = "12345%4d".formatted(random.nextInt(10000));
 		Account account = new Account(number, "John Doe");
 		account.addBeneficiary("Jane Doe");
 		

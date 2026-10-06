@@ -32,14 +32,14 @@ public class RewardsApplication {
 	@Component
 	public final class QueryAccountCountRunner implements CommandLineRunner {
 
-		private JdbcTemplate jdbcTemplate;
+		private final JdbcTemplate jdbcTemplate;
 
 		public QueryAccountCountRunner(JdbcTemplate jdbcTemplate) {
 			this.jdbcTemplate = jdbcTemplate;
 		}
 
 		@Override
-		public void run(String... args) throws Exception {
+		public void run(String... args) {
 			long accountCount = this.jdbcTemplate.queryForObject(SQL, Long.class);
 			logger.info("Number of accounts:{}", accountCount);
 		}

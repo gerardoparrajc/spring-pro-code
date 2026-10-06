@@ -1,11 +1,11 @@
 package rewards.internal.restaurant;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 import rewards.Dining;
 import rewards.internal.account.Account;
@@ -17,7 +17,7 @@ import common.money.Percentage;
  * A restaurant establishment in the network. Like AppleBee's.
  * 
  * Restaurants calculate how much benefit may be awarded to an account for
- * dining based on a availability policy and a benefit percentage.
+ * dining based on an availability policy and a benefit percentage.
  */
 @Entity
 @Table(name = "T_RESTAURANT")

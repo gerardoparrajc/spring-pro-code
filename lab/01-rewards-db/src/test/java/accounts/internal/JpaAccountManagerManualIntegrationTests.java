@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class JpaAccountManagerManualIntegrationTests extends AbstractDatabaseAccountManagerTests {
 
-	DataManagementSetup dataManagementSetup = new DataManagementSetup();
+	final DataManagementSetup dataManagementSetup = new DataManagementSetup();
 
 	public JpaAccountManagerManualIntegrationTests() {
 		setupForTest();
@@ -35,7 +35,7 @@ public class JpaAccountManagerManualIntegrationTests extends AbstractDatabaseAcc
 	}
 
 	@AfterEach
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		transactionUtils.rollbackTransaction();
 	}
 

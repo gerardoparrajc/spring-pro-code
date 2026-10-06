@@ -16,7 +16,7 @@ public interface RestaurantRepository {
 	 * 
 	 * @return Implementation information.
 	 */
-	public String getInfo();
+	String getInfo();
 
 	/**
 	 * Load a Restaurant entity by its merchant number.
@@ -25,12 +25,12 @@ public interface RestaurantRepository {
 	 *            the merchant number
 	 * @return the restaurant
 	 */
-	public Restaurant findByMerchantNumber(String merchantNumber);
+	Restaurant findByMerchantNumber(String merchantNumber);
 
 	/**
 	 * Find the number of restaurants in the repository.
 	 * 
 	 * @return The number of restaurants - zero or more.
 	 */
-	public Long getRestaurantCount();
+	Long getRestaurantCount();
 }

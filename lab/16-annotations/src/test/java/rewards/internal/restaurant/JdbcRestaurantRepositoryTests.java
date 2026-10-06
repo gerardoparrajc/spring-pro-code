@@ -20,7 +20,7 @@ public class JdbcRestaurantRepositoryTests {
 	private JdbcRestaurantRepository repository;
 
 	@BeforeEach
-	public void setUp() throws Exception {
+	public void setUp() {
 		// simulate the Spring bean initialization lifecycle:
 		// first, construct the bean
 		repository = new JdbcRestaurantRepository();
@@ -33,7 +33,7 @@ public class JdbcRestaurantRepositoryTests {
 	}
 
 	@AfterEach
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		// simulate the Spring bean destruction lifecycle:
 		repository.clearRestaurantCache();
 	}
@@ -55,7 +55,7 @@ public class JdbcRestaurantRepositoryTests {
 	}
 
 	@Test
-	public void restaurantCacheClearedAfterDestroy() throws Exception {
+	public void restaurantCacheClearedAfterDestroy() {
 		// force early tear down
 		tearDown();
 		assertThrows(EmptyResultDataAccessException.class, ()-> {

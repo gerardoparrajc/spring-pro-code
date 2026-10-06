@@ -30,7 +30,7 @@ public class StubAccountRepository implements AccountRepository {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	private Map<String, Account> accountsByCreditCard = new HashMap<String, Account>();
+	private final Map<String, Account> accountsByCreditCard = new HashMap<>();
 
 	/**
 	 * Creates a single test account with two beneficiaries. Also logs creation

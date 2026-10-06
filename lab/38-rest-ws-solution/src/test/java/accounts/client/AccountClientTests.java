@@ -1,6 +1,5 @@
 package accounts.client;
 
-import accounts.RestWsApplication;
 import common.money.Percentage;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,15 +15,15 @@ import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(classes = RestWsApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class AccountClientTests {
     @LocalServerPort
     private int port;
 
 	private static final String BASE_URL = "http://localhost:";
 	
-	private RestTemplate restTemplate = new RestTemplate();
-	private Random random = new Random();
+	private final RestTemplate restTemplate = new RestTemplate();
+	private final Random random = new Random();
 	
 	@Test 
 	public void listAccounts() {
@@ -50,7 +49,7 @@ public class AccountClientTests {
 	public void createAccount() {
 		String url = BASE_URL + port + "/accounts";
 		// use a unique number to avoid conflicts
-		String number = String.format("12345%4d", random.nextInt(10000));
+		String number = "12345%4d".formatted(random.nextInt(10000));
 		Account account = new Account(number, "John Doe");
 		account.addBeneficiary("Jane Doe");
 		URI newAccountLocation = restTemplate.postForLocation(url, account);

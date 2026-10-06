@@ -12,7 +12,7 @@ import rewards.RewardConfirmation;
  */
 public class JdbcRewardRepository implements RewardRepository {
 	
-	private JdbcTemplate jdbcTemplate;
+	private final JdbcTemplate jdbcTemplate;
 
 	public JdbcRewardRepository(JdbcTemplate jdbcTemplate) {
 

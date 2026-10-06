@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public class JdbcRestaurantRepository implements RestaurantRepository {
 	
-	private JdbcTemplate jdbcTemplate;
+	private final JdbcTemplate jdbcTemplate;
 
 	public JdbcRestaurantRepository(JdbcTemplate jdbcTemplate) {
 
@@ -24,7 +24,7 @@ public class JdbcRestaurantRepository implements RestaurantRepository {
 	/**
 	 * Maps a row returned from a query of T_RESTAURANT to a Restaurant object.
 	 */
-	private RowMapper<Restaurant> rowMapper = new RestaurantRowMapper();
+	private final RowMapper<Restaurant> rowMapper = new RestaurantRowMapper();
 
 	public Restaurant findByMerchantNumber(String merchantNumber) {
 		String sql = "select MERCHANT_NUMBER, NAME, BENEFIT_PERCENTAGE, BENEFIT_AVAILABILITY_POLICY from T_RESTAURANT where MERCHANT_NUMBER = ?";
